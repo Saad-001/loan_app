@@ -53,6 +53,7 @@ const SignInPage = () => {
             }}
           >
             {(formikProps) => {
+              console.log(formikProps);
               return (
                 <form
                   className="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96"
@@ -60,7 +61,10 @@ const SignInPage = () => {
                 >
                   <div
                     className={`mb-4 flex flex-col ${
-                      formikProps.errors.phoneNumber ? "gap-8" : "gap-4"
+                      formikProps.touched.phoneNumber &&
+                      formikProps.errors.phoneNumber
+                        ? "gap-8"
+                        : "gap-4"
                     } text-white`}
                   >
                     <div className="relative">
@@ -110,7 +114,10 @@ const SignInPage = () => {
                   </div>
                   <Button
                     className={`${
-                      formikProps.errors.password ? "mt-10" : "mt-7"
+                      formikProps.touched.password &&
+                      formikProps.errors.password
+                        ? "mt-10"
+                        : "mt-7"
                     } bg-white font-sans`}
                     size="lg"
                     fullWidth
